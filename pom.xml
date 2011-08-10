@@ -36,7 +36,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>org.wiztools.amazonsescli.AmazonSESMain</mainClass>
+                            <mainClass>org.wiztools.amazonsescli.AWSSeSMain</mainClass>
                         </manifest>
                         <manifestEntries>
                             <mode>development</mode>

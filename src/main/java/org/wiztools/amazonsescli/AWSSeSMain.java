@@ -15,14 +15,14 @@ import joptsimple.OptionSet;
  *
  * @author subWiz
  */
-public class AmazonSESMain {
+public class AWSSeSMain {
     private static void printHelp(PrintStream out) {
         out.println("Usage: ");
         out.println("\tjava -jar amazon-ses-cli-NN-jar-with-dependencies.jar \\"
                 + "\n\t\t-k /path/to/aws-credentials.properties \\"
                 + "\n\t\t-s \"Mail subject\" \\"
                 + "\n\t\t-f \"sender@domain.tld\" \\");
-        out.println("\t\tto_1@domain.tld to_2@domain.tld ... < message.txt");
+        out.println("\t\tto_1@domain.tld to_2@domain.tld ... < message_body.txt");
         out.println();
         out.println("Format of `aws-credentials.properties':");
         out.println("\tAWSAccessKeyId=XXX");
