@@ -18,7 +18,10 @@ import joptsimple.OptionSet;
 public class AmazonSESMain {
     private static void printHelp(PrintStream out) {
         out.println("Usage: ");
-        out.println("\t-k /path/to/aws-credentials.properties -s \"Mail subject\" -f \"sender@domain.tld\" \\");
+        out.println("\tjava -jar amazon-ses-cli-NN-jar-with-dependencies.jar \\"
+                + "\n\t\t-k /path/to/aws-credentials.properties \\"
+                + "\n\t\t-s \"Mail subject\" \\"
+                + "\n\t\t-f \"sender@domain.tld\" \\");
         out.println("\t\tto_1@domain.tld to_2@domain.tld ... < message.txt");
         out.println();
         out.println("Format of `aws-credentials.properties':");
@@ -49,13 +52,13 @@ public class AmazonSESMain {
             }
 
             if(!(options.has("k") && options.has("s") && options.has("f"))) {
-                System.err.print("One required argument missing. Usage: ");
+                System.err.println("Required argument(s) missing.");
                 printHelp(System.err);
                 System.exit(1);
             }
             
             if(options.nonOptionArguments().isEmpty()) {
-                System.err.println("There should be atleast one to-email-address. Usage: ");
+                System.err.println("There should be atleast one to-email-address.");
                 printHelp(System.err);
                 System.exit(1);
             }
@@ -66,6 +69,8 @@ public class AmazonSESMain {
             for(String to: options.nonOptionArguments()) {
                 bean.addTo(to);
             }
+            
+            bean.setSubject(options.valueOf("s").toString());
             
             // Read message body from STDIN:
             try{
