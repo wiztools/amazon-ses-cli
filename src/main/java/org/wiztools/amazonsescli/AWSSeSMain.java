@@ -66,8 +66,8 @@ public class AWSSeSMain {
             // Create the MailBean:
             final MailBean bean = new MailBean();
             bean.setFrom(options.valueOf("f").toString());
-            for(String to: options.nonOptionArguments()) {
-                bean.addTo(to);
+            for(Object to: options.nonOptionArguments()) {
+                bean.addTo(String.valueOf(to));
             }
             
             bean.setSubject(options.valueOf("s").toString());
